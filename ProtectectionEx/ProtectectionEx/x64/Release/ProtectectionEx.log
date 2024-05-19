@@ -1,0 +1,42 @@
+﻿  
+    **************************************************
+    *         Universal C++ RunTime (UCXXRT)         *
+    **************************************************
+    
+    UCXXRT Path      : D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\packages\ucxxrt.3.0.7\lib\native\
+    Platform         : x64
+    Configuration    : Release
+    Tools Version    : 14.29.30133
+    Platform Version : 10.0.19041.0
+    Kernel Mode      : true
+    
+  Building 'ProtectectionEx' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Release\ProtectectionEx.inf
+  Stamping [Version] section with DriverVer=05/19/2024,12.50.54.31
+  Driver.cpp
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Struct.hpp(394,2): warning C4273: “PsLookupProcessByProcessId”: dll 链接不一致
+D:\Windows Kits\10\Include\10.0.19041.0\km\ntifs.h(17492,1): message : 参见“PsLookupProcessByProcessId”的前一个定义
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Struct.hpp(402,72): warning C4273: “PsLookupThreadByThreadId”: dll 链接不一致
+D:\Windows Kits\10\Include\10.0.19041.0\km\ntifs.h(17502,1): message : 参见“PsLookupThreadByThreadId”的前一个定义
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Struct.hpp(403,54): warning C4273: “IoThreadToProcess”: dll 链接不一致
+D:\Windows Kits\10\Include\10.0.19041.0\km\ntifs.h(18441,1): message : 参见“IoThreadToProcess”的前一个定义
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Driver.cpp(5,34): warning C4100: “drive_object”: 未引用的形参
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Driver.cpp(13,77): warning C4100: “path”: 未引用的形参
+  Protection.cpp
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Struct.hpp(394,2): warning C4273: “PsLookupProcessByProcessId”: dll 链接不一致
+D:\Windows Kits\10\Include\10.0.19041.0\km\ntifs.h(17492,1): message : 参见“PsLookupProcessByProcessId”的前一个定义
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Struct.hpp(402,72): warning C4273: “PsLookupThreadByThreadId”: dll 链接不一致
+D:\Windows Kits\10\Include\10.0.19041.0\km\ntifs.h(17502,1): message : 参见“PsLookupThreadByThreadId”的前一个定义
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Struct.hpp(403,54): warning C4273: “IoThreadToProcess”: dll 链接不一致
+D:\Windows Kits\10\Include\10.0.19041.0\km\ntifs.h(18441,1): message : 参见“IoThreadToProcess”的前一个定义
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Protection.cpp(7,15): warning C4459: “SignatureLevelOffset”的声明隐藏了全局声明
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Protection.cpp(5,7): message : 参见“SignatureLevelOffset”的声明
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Protection.cpp(8,15): warning C4459: “SectionSignatureLevelOffset”的声明隐藏了全局声明
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Protection.cpp(5,31): message : 参见“SectionSignatureLevelOffset”的声明
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Protection.cpp(365,33): warning C4456: “ownerPid”的声明隐藏了上一个本地声明
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Protection.cpp(358,8): message : 参见“ownerPid”的声明
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Protection.cpp(357,8): warning C4189: “tid”: 局部变量已初始化但不引用
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Protection.cpp(365,13): warning C4189: “ownerPid”: 局部变量已初始化但不引用
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Protection.cpp(384,63): error C2276: “&”: 绑定成员函数表达式上的非法操作
+D:\ProgarmRelease\Cpp_Sln\ProtectectionEx\ProtectectionEx\Protection.cpp(401,68): error C2276: “&”: 绑定成员函数表达式上的非法操作
+  正在生成代码...
