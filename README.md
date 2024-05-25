@@ -4,9 +4,13 @@ Simple Ways such as ZwTerminateProcess<br />
 To Terminate Process which Protected By this Driver!<br />
 This Driver uses<br />
 1.APC (KTHREAD+144) Change{<br />
-MiscFlag <br />
-ScbReadyQueue=0<br />
-AlerTable=0<br />
+1111 1111 
+1111 1111
+1111 1111
+1111 1111
+1111 1011
+1111 1111
+1111
 }<br />
 2.Token Level Up<br />
 3.PPL Protection ( Some SourceCode Forked in PPLKILLER(github) )<br />
