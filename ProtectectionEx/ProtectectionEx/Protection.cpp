@@ -362,10 +362,12 @@ OB_PREOP_CALLBACK_STATUS Protection::OnPreOpenThread(PVOID RegistrationContext, 
 	if (callerPid == ownerPid || callerPid == 4 || callerPid == 0) {
 		return OB_PREOP_SUCCESS;
 	}
-	for (ULONG ownerPid : _Pid_LIst) {
+	for (ULONG ProPid : _Pid_LIst) {
+		if(ownerPid==ProPid){
 		OperationInformation->Parameters->CreateHandleInformation.DesiredAccess &= ~THREAD_TERMINATE;
 		OperationInformation->Parameters->CreateHandleInformation.DesiredAccess &= ~THREAD_SUSPEND_RESUME;
 		OperationInformation->Parameters->CreateHandleInformation.DesiredAccess &= ~THREAD_SET_CONTEXT;
+		}
 	}
 	return OB_PREOP_SUCCESS;
 }
@@ -378,12 +380,12 @@ NTSTATUS Protection::Init_Process_Callbacks() {
 	obReg.OperationRegistrationCount = 1;
 	obReg.RegistrationContext = NULL;
 	RtlInitUnicodeString(&obReg.Altitude, L"321000");
-	memset(&opReg, 0, sizeof(opReg)); //³õÊ¼»¯½á¹¹Ìå±äÁ¿
+	memset(&opReg, 0, sizeof(opReg)); //åˆå§‹åŒ–ç»“æ„ä½“å˜é‡
 	opReg.ObjectType = PsProcessType;
 	opReg.Operations = OB_OPERATION_HANDLE_CREATE | OB_OPERATION_HANDLE_DUPLICATE;
 	opReg.PreOperation = static_cast<POB_PRE_OPERATION_CALLBACK>(&OnPreOpenProcess);
-	obReg.OperationRegistration = &opReg; //×¢ÒâÕâÒ»ÌõÓï¾ä
-	ObRegisterCallbacks(&obReg, &ProcessObHandle); //×¢²á»Øµ÷º¯Êı
+	obReg.OperationRegistration = &opReg; //æ³¨æ„è¿™ä¸€æ¡è¯­å¥
+	ObRegisterCallbacks(&obReg, &ProcessObHandle); //æ³¨å†Œå›è°ƒå‡½æ•°
 	return STATUS_SUCCESS;
 }
 NTSTATUS Protection::Init_Thread_Callbacks() {
@@ -395,12 +397,12 @@ NTSTATUS Protection::Init_Thread_Callbacks() {
 	obReg.OperationRegistrationCount = 1;
 	obReg.RegistrationContext = NULL;
 	RtlInitUnicodeString(&obReg.Altitude, L"321000");
-	memset(&opReg, 0, sizeof(opReg)); //³õÊ¼»¯½á¹¹Ìå±äÁ¿
+	memset(&opReg, 0, sizeof(opReg)); //åˆå§‹åŒ–ç»“æ„ä½“å˜é‡
 	opReg.ObjectType = PsThreadType;
 	opReg.Operations = OB_OPERATION_HANDLE_CREATE | OB_OPERATION_HANDLE_DUPLICATE;
 	opReg.PreOperation = reinterpret_cast<POB_PRE_OPERATION_CALLBACK>(&OnPreOpenThread);
-	obReg.OperationRegistration = &opReg; //×¢ÒâÕâÒ»ÌõÓï¾ä
-	ObRegisterCallbacks(&obReg, &ThreadObHandle); //×¢²á»Øµ÷º¯Êı
+	obReg.OperationRegistration = &opReg; //æ³¨æ„è¿™ä¸€æ¡è¯­å¥
+	ObRegisterCallbacks(&obReg, &ThreadObHandle); //æ³¨å†Œå›è°ƒå‡½æ•°
 	return STATUS_SUCCESS;
 }
 NTSTATUS Protection::InsertProtectionToPid(ULONG PID) {
@@ -466,5 +468,5 @@ PVOID GetPspCidTable()
 		}*/
 //Hidden Process
 
-//PS ÒòÎªÎÒÖ»ĞèÒª±£»¤½ø³Ì ¶ø²»ÊÇÒş²Ø½ø³Ì ËùÒÔÕâ¸ö±£»¤¿ÉÒÔ±»Ë¢»Ø (ÔÚÄÚºËÀïÃæµÄ½øĞĞÄæ²Ù×÷)
-//ÈôÒş²Ø½ø³Ì ÄÇ¾ÍÊÇ¶ÏÁ´µÄÊÂÇéÁË PspCidTable ThreadTable ActiveProcessTableÕâĞ©£¨Ò»Ğ©Ãû´ÊÎª¼òĞ´)
+//PS å› ä¸ºæˆ‘åªéœ€è¦ä¿æŠ¤è¿›ç¨‹ è€Œä¸æ˜¯éšè—è¿›ç¨‹ æ‰€ä»¥è¿™ä¸ªä¿æŠ¤å¯ä»¥è¢«åˆ·å› (åœ¨å†…æ ¸é‡Œé¢çš„è¿›è¡Œé€†æ“ä½œ)
+//è‹¥éšè—è¿›ç¨‹ é‚£å°±æ˜¯æ–­é“¾çš„äº‹æƒ…äº† PspCidTable ThreadTable ActiveProcessTableè¿™äº›ï¼ˆä¸€äº›åè¯ä¸ºç®€å†™)
